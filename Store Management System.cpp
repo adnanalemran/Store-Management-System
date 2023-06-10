@@ -103,15 +103,15 @@ void dept::check_item()
     system("cls");
     system("Color 0A");
     fstream file;
+    int no_item, Item_code, search_code;
+    string itm_name;
+    string c_name;
     int count = 0;
-    int Item_code;
-    int no_item;
-    string itm_name, c_name;
-    cout << "\n\n\t\t\t\t Check Specific Product\n";
+    cout << "\n\n\t\t\t Check Specific Item: \n";
     cout << "----------------------------------------------"
             "----------------------------\n";
     cout << "\n\n\t\t\t Enter Item Code to be Searched: ";
-    cin >> Item_code;
+    cin >> search_code;
     cout << "----------------------------------------------"
             "----------------------------\n";
     file.open("D://item.txt", ios::in);
@@ -120,12 +120,13 @@ void dept::check_item()
     }
     else {
         while (file >> Item_code >> itm_name >> c_name >> no_item) {
-            if (Item_code == Item_code) {
+            if (search_code == Item_code) {
                 count++;
                 cout << "\n\n\t\t\t Item Code: " << Item_code;
                 cout << "\n\n\t\t\t Item Name: " << itm_name;
                 cout << "\n\n\t\t\t Item Company: " << c_name;
                 cout << "\n\n\t\t\t Item No. of Items: " << no_item;
+                break;  // Stop searching after finding the specific item
             }
         }
         if (count == 0) {
@@ -134,6 +135,7 @@ void dept::check_item()
         file.close();
     }
 }
+
 
 void dept::update_item()
 {
